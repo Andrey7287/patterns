@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+	<title>...</title>
+</head>
+
+<body>
+	<div class="body">
+
+			<div class="map-wrapper" style="position: relative">
+				<div style="height: 450px" id="map" class="map">
+
+				</div>
+				<div class="address" id="mapContact" style="position: absolute">
+					<div class="address__txt">
+						<div class="address__top">121205, Москва,<br />
+							Россия, территория<br />
+							инновационного центра<br />
+							Сколково, ул. Нобеля, д. 7</div>
+
+						<div class="address__bottom">
+							+7 (495) 005-9382<br />
+							<a href="mailto:info@etbcat.com">info@etbcat.com</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrv1MXaXB9mvXQ2qAWL4W-ZYX2U4r5B3Y"></script>
+
+			<script>
+				function initMap() {
+					var center = {lat: 55.685973, lng: 37.339480},
+						blueSqure = {lat: 55.68375, lng: 37.34281},
+						octagon = {lat: 55.681204, lng: 37.3396},
+						//for html overlay
+						myLatlng = new google.maps.LatLng(55.685973,37.339480);
+
+					// Create a map object and specify the DOM element for display.
+					var map = new google.maps.Map(document.getElementById('map'), {
+						center: center,
+						scrollwheel: false,
+						zoom: 15,
+						"elementType": "geometry.fill",
+						disableDefaultUI: true
+					});
+					// Create a markers and set its position.
+					//blue squre
+					var target = new google.maps.Marker({
+						map: map,
+						position: blueSqure,
+						icon: 'images/map/squre.png'
+					});
+					//octagon
+					var area = new google.maps.Marker({
+						map: map,
+						position: octagon,
+						icon: 'images/map/octagon.png'
+					});
+					//Styles
+					var styles = [
+						{
+							"elementType": "geometry.fill",
+							"stylers": [
+								{
+									"color": "#f0fbff"
+								}
+							]
+						}
+					];
+					map.setOptions({styles: styles});
+					//Html overlay
+					overlay = new CustomMarker(
+						'mapContact',
+						myLatlng,
+						map,
+						{
+							marker_id: 'contact'
+						}
+					);
+				}
+				google.maps.event.addDomListener(window, 'load', initMap);
+			</script>
+
+		<!-- FOOTER -->
+		</div>
+		<footer class="footer">
+
+		</footer>
+
+	<script type="text/javascript" src="CustomGoogleMapMarker.js"></script>
+</body>
+
+</html>

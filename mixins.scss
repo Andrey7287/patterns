@@ -1,0 +1,199 @@
+@mixin clearfix {
+	&:after {
+	content: "";
+	display: table;
+	clear: both;
+	}
+}
+
+@mixin hone($background: #fff, $color: $default-color) {
+	overflow:hidden;
+	position:relative;
+	span {
+		z-index: 2;
+		position: relative;
+		background: $background;
+	}
+	&:before {
+		bottom: 1px;
+		position:absolute;
+		z-index: 1;
+		color: $color;
+		content: "...................................................................................................................................................................................................................................................................................................................................................";
+	}
+}
+
+/*Descriptions
+$path - url to sprite img
+$width - width of the single image in target sprite
+$height - height of the single image
+$row and $cell - amount of rows and cells in sprite
+0 - eq. the first
+1 - second, etc
+( look at your sprite like it would be the table )*/
+
+@mixin sprite($path, $width, $height, $row, $cell) {
+	&::before {
+	content: "";
+	display: inline-block;
+	width: $width+px;
+	height: $height+px;
+	background: url($path) (-$cell * $width)+px (-$row * $height)+px no-repeat;
+	}
+}
+@mixin sprite-pos($path, $width, $height, $row, $cell, $pos-x: 0, $pos-y: 0) {
+	position: relative;
+	&::before {
+	position: absolute;
+	top: $pos-y + px;
+	left: $pos-x + px;
+	content: "";
+	display: inline-block;
+	width: $width+px;
+	height: $height+px;
+	background: url($path) (-$cell * $width)+px (-$row * $height)+px no-repeat;
+	}
+}
+
+@mixin breakpoint($point) {
+	@if $point == desktop {
+	@media (min-width: 1024px) { @content; }
+	}
+	@if $point == tablet {
+	@media (min-width: 768px) and (max-width: 1023px) { @content; }
+	}
+	@if $point == tablet-desktop {
+	@media (min-width: 768px) { @content; }
+	}
+	@if $point == all-small {
+		@media (max-width: 1023px ) { @content; }
+	}
+	@if $point == mobile {
+	@media (max-width: 767px ) { @content; }
+	}
+	// Additional
+	@if $point == tablet-small {
+		@media (min-width: 426px) and (max-width: 767px) { @content; }
+	}
+	@if $point == mobile-small {
+		@media (max-width: 480px) { @content; }
+	}
+}
+
+
+
+
+@mixin raiting ($w, $h, $url){
+	div {
+		display: inline-block;
+		width: $w*5 + px;
+		height: $h+px;
+		background: url($url) 0 0 repeat-x;
+	}
+		$i: 5;
+		$mov: 0;
+		@while $i > -1 {
+			input[value="#{$i}"]+div{
+				background: url($url) 0 0 repeat-x;
+				span {
+					display: inline-block;
+					width: (($w*5) - $mov) + px;
+					height: $h+px;
+					float: left;
+					background: url($url) 0 -40px repeat-x;
+				}
+			}
+			$i: $i - 1;
+			$mov: $mov + $w;
+		}
+}
+
+<div class="raiting">
+	<input type="hidden" value="3">
+	<div><span></span></div>
+</div>
+
+$url: 'http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png';
+.raiting {
+	@include raiting(43, 40, $url);
+}
+
+
+
+
+@mixin list($color: blue, $size: small){
+	padding: 0 0 0 7px;
+	margin: 7px 0;
+	list-style: none;
+	li {
+		padding: 9px 5px 9px 20px;
+		font: normal 14px/16px $site-font;
+		@if $color == blue {
+			background: url(img/list-stile-blue.png) 0 50% no-repeat;
+		}
+		@if $color == green {
+			background: url(img/list-stile-green.png) 0 50% no-repeat;
+		}
+
+		@if $size == big {
+			padding: 10px 5px 10px 20px;
+			font: normal 18px/18px $site-font;
+		}
+		a {
+			font: normal 14px/16px $site-font;
+			color: #0a6886;
+			border-bottom: 1px solid #0a6886;
+			@if $size == big {
+				font: normal 18px/22px $site-font;
+			}
+			&:hover {
+				border-bottom: 0;
+				text-decoration: none;
+				color: darken(#0a6886, 11%);
+			}
+		}
+		a[href^='#']{
+			border-bottom: 1px dashed #0a6886;
+			&:hover {
+				border-bottom: 0;
+				text-decoration: none;
+			}
+		}
+	}
+}
+
+
+@mixin font($context: $base-font-size, $size: $base-font-size, $height: $base-line-height, $weight: 400, $font: $default-font){
+	font-weight: $weight;
+
+	$this: $size/$context;
+
+	font-size: $this + em;
+	line-height: $height/$size + em;
+	font-family: $font;
+}
+
+@mixin rub{
+	padding: 0 18px 0 4px;
+	background: url(images/rub.png) 100% 50% no-repeat;
+	color: #a12569;
+	display: inline-block;
+	span {
+		font-weight: 700;
+	}
+}
+
+@mixin link($color, $hov: darken($color, 15%)){
+	color: $color;
+	border-bottom: 1px solid $color;
+	transition: 0.3s;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		border-bottom: 1px solid transparent;
+		color: $hov;
+	}
+	&:focus {
+		outline: none;
+	}
+}

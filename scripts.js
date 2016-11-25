@@ -101,3 +101,15 @@ function toggleMenu(e){
 	$(this).parent().siblings().find('ul').stop().hide('slow');
 	$(this).next().stop().toggle('slow');
 };
+if (window.devicePixelRatio > 1) {
+	$(".retina").imagesLoaded(function () {
+		$(".retina").each(function () {
+			var src = $(this).attr("src").replace(".", "@2x.");
+			var h = $(this).height();
+			$(this).attr("src", src).css({
+				height: h
+				, width: "auto"
+			});
+		});
+	});
+}

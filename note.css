@@ -286,3 +286,10 @@ a {
 		box-shadow: 0 0 0 -15px #fff inset, 0 0 0 -15px #fff inset;
 	}
 }
+
+//cosole 
+document.body.contentEditable=true
+getEventListeners($('selector'))
+getEventListeners($('selector')).eventName[0].listener
+monitorEvents($('selector'))
+monitorEvents($('selector'),'eventName')

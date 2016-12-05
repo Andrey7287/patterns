@@ -13,27 +13,41 @@ function randomInteger(min, max) {
 	return rand;
 }
 
-function pressFooter(){
-	$('.content').height('auto');
-	//bitrix panel
-	var adminHeight = $('#bx-panel').length ? $('#bx-panel').outerHeight(true) : 0;
+function pressFooter(cms, container){
 
-	var viewportHeight = $(window).outerHeight(true);
+	var $content = $(container),
+			adminHeight,
+			viewportHeight,
+			headerHeight,
+			contentHeight,
+			footerHeight;
 
-	var headerHeight = $('.header').outerHeight(true);
-	var contentHeight = $('.content').outerHeight(true);
-	var footerHeight = $('.footer').outerHeight(true);
+	switch (cms) {
+		case 'bitrix':
+			adminHeight = $('#bx-panel').length ? $('#bx-panel').outerHeight(true) : 0;
+			break;
+		case 'emerald':
+			adminHeight = $('.adminTopPanel').length ? $('.adminTopPanel').outerHeight(true) : 0;
+			break;
+		default:
+			adminHeight = 0;
+	}
 
-	var contentHeight = headerHeight + contentHeight + footerHeight + adminHeight;
+	$('body').height('auto');
+	viewportHeight = $(window).outerHeight(true);
 
+	headerHeight = $('header').outerHeight(true);
+	contentHeight = $content.outerHeight(true);
+	footerHeight = $('footer').outerHeight(true);
 
-	if ( (viewportHeight - contentHeight) > 0 ) {
+	contentHeight = headerHeight + contentHeight + footerHeight + adminHeight;
+
+	if ( (viewportHeight > contentHeight) ) {
 		contentHeight = viewportHeight - ( headerHeight + footerHeight + adminHeight);
-		$('.content').height(contentHeight+"px");
+		$content.height(contentHeight+"px");
 	}
 
 };
-
 
 	/* -= SCROLL UP =- */
 	$("#scroll-top").click(function(e) {

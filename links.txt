@@ -9,3 +9,4 @@ http://sass-scss.ru/documentation/
 https://mapstyle.withgoogle.com/
 http://software.stadtwerk.org/google_maps_colorizr/
 http://www.favicon.by/
+http://tympanus.net/Development/HoverEffectIdeas/

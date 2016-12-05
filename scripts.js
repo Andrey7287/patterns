@@ -19,8 +19,9 @@ function pressFooter(cms, container){
 			adminHeight,
 			viewportHeight,
 			headerHeight,
-			contentHeight,
-			footerHeight;
+			siteHeight,
+			footerHeight,
+			newHeight;
 
 	switch (cms) {
 		case 'bitrix':
@@ -33,18 +34,18 @@ function pressFooter(cms, container){
 			adminHeight = 0;
 	}
 
-	$('body').height('auto');
+	$content.height('auto');
 	viewportHeight = $(window).outerHeight(true);
 
 	headerHeight = $('header').outerHeight(true);
 	contentHeight = $content.outerHeight(true);
 	footerHeight = $('footer').outerHeight(true);
 
-	contentHeight = headerHeight + contentHeight + footerHeight + adminHeight;
+	siteHeight = headerHeight + contentHeight + footerHeight + adminHeight;
 
-	if ( (viewportHeight > contentHeight) ) {
-		contentHeight = viewportHeight - ( headerHeight + footerHeight + adminHeight);
-		$content.height(contentHeight+"px");
+	if ( (viewportHeight > siteHeight) ) {
+		newHeight = viewportHeight - ( headerHeight + footerHeight + adminHeight);
+		$content.outerHeight(newHeight+"px");
 	}
 
 };

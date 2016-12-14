@@ -235,6 +235,59 @@ ul:not(.main-menu):not(.activity):not(.services) {
 }
 https://tproger.ru/translations/8-tricks-with-css/
 
+input {
+	&[type=checkbox] {
+		display: none;
+		& + label {
+			display: inline-block;
+			margin-left: 0;
+			margin-bottom: 5px;
+			&::before {
+				content: "";
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				background: url(img/checkbox.png);
+				vertical-align: bottom;
+				margin-right: 10px;
+			}
+		}
+		&:checked {
+			& + label {
+				&::before {
+					background: url(img/checkbox_checked.png);
+				}
+			}
+		}
+	}
+	&[type=radio] {
+		display: none;
+		& + label {
+			display: inline-block;
+			margin-left: 0;
+			margin-bottom: 5px;
+			&::before {
+				content: "";
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				line-height: 20px;
+				background: url(img/radio.png);
+				vertical-align: bottom;
+				margin-right: 10px;
+			}
+		}
+		&:checked {
+			& + label {
+				&::before {
+					background: url(img/radio-on.png);
+				}
+			}
+		}
+	}
+}
+
 
 <div class="search">
 	<form action="/search/" method="get">

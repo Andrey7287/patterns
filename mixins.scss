@@ -200,3 +200,29 @@ $url: 'http://positivecrash.com/wp-content/uploads/ico-s71a7fdede6.png';
 		outline: none;
 	}
 }
+.catalog__item {
+	padding: 18px 0;
+	position: relative;
+	background: url(../images/border-top-left.png) left top no-repeat, url(../images/border-top-right.png) right top no-repeat, url(../images/border-bottom-right.png) right bottom no-repeat, url(../images/border-bottom-left.png) left bottom no-repeat;
+	&::before,
+	&::after {
+		content: " ";
+		display: block;
+		height: 18px;
+		position: absolute;
+		left: 15px;
+		right: 15px;
+	}
+	&::before {
+		top: 0;
+		background-image: url(../images/border-top1.png);
+	}
+	&::after {
+		bottom: 0;
+		background-image: url(../images/border-bottom1.png);
+	}
+	.bordered-inner {
+		background: url(../images/border-left.png) left top repeat-y, url(../images/border-right.png) right top repeat-y;
+		padding: 0 15px; 
+	}
+}

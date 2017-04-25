@@ -128,3 +128,37 @@ if (window.devicePixelRatio > 1) {
 		});
 	});
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+
+	var mobileView = window.matchMedia("(max-width: 768px)").matches;
+	if (mobileView) {
+		var meta = document.createElement('meta');
+		meta.setAttribute('name', 'viewport');
+		meta.setAttribute('content', 'initial-scale=1.0, width=device-width');
+		document.getElementsByTagName("head")[0].appendChild(meta);
+	}
+
+});
+
+var isMobile = { 
+	Android: function() { 
+		return navigator.userAgent.match(/Android/i); 
+	}, 
+	BlackBerry: function() { 
+		return navigator.userAgent.match(/BlackBerry/i); 
+	}, 
+	iOS: function() { 
+		return navigator.userAgent.match(/iPhone|iPad|iPod/i); 
+	},
+	Opera: function() { 
+		return navigator.userAgent.match(/Opera Mini/i); 
+	}, 
+	Windows: function() { 
+		return navigator.userAgent.match(/IEMobile/i); 
+	}, 
+	any: function() { 
+		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); 
+	} 
+};

@@ -12,4 +12,4 @@ http://www.favicon.by/
 http://tympanus.net/Development/HoverEffectIdeas/
 http://freefrontend.com/css-checkboxes/
 http://freefrontend.com/css-checkboxes/
-
+https://developers.google.com/maps/documentation/javascript/adding-a-google-map

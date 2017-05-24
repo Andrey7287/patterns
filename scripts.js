@@ -162,3 +162,23 @@ var isMobile = {
 		return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); 
 	} 
 };
+
+var $topMenu = $('.head');
+
+		function switchTop(){
+
+			var $scrollTop = $(document).scrollTop();
+			if( $scrollTop ){
+				$topMenu.addClass('head--slim');
+
+				if ( $topMenu.hasClass('head--slim') && $scrollTop > 750 ){
+					$topMenu.addClass('head--no-bkg');
+				} else { $topMenu.removeClass('head--no-bkg'); }
+
+
+			} else {
+				$topMenu.removeClass('head--slim');
+			}
+		};
+		switchTop();
+		$(document).scroll(switchTop);

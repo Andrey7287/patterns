@@ -182,3 +182,16 @@ var $topMenu = $('.head');
 		};
 		switchTop();
 		$(document).scroll(switchTop);
+
+$('.submenu a[href^="#"]').click(function (e) {
+
+	e.preventDefault();
+
+	var target = $(this).attr('href'),
+		scrollTo = $('' + target).offset().top;
+
+	$('html, body').animate({
+		scrollTop: scrollTo
+	}, 800);
+
+});

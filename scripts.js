@@ -12,6 +12,7 @@ function randomInteger(min, max) {
 	rand = Math.round(rand);
 	return rand;
 }
+arr[Math.floor(Math.random() * arr.length)];
 
 function pressFooter(cms, container){
 

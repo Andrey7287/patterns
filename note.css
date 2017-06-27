@@ -411,3 +411,19 @@ table {
 		}
 	}
 }
+
+		&::-webkit-input-placeholder {
+			color: $form-color; /* Webkit 56- */
+		}
+		&::-moz-placeholder { /* Firefox 19+ */
+			color: $form-color;
+		}
+		&:-ms-input-placeholder { /* IE 10+ */
+			color: $form-color;
+		}
+		&::-ms-input-placeholder { /* Edge */
+			color: $form-color;
+		}
+		&::placeholder {
+			color: $form-color; /* standart */
+		}

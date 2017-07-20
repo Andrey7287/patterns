@@ -14,7 +14,9 @@ http://freefrontend.com/css-checkboxes/
 http://freefrontend.com/css-checkboxes/
 https://developers.google.com/maps/documentation/javascript/adding-a-google-map
 http://trentrichardson.com/examples/timepicker/
+http://www.favicon-generator.org/
 http://realfavicongenerator.net/
 http://gradientbuttons.colorion.co/
 http://freefrontend.com/css-headers-footers/
 www.templatemonster.com
+

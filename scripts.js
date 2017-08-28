@@ -196,3 +196,29 @@ $('.submenu a[href^="#"]').click(function (e) {
 	}, 800);
 
 });
+
+    function num2word($num,$words) {
+      $num=$num%100;
+      if ($num>19) { $num=$num%10; }
+      switch ($num) {
+        case 1:  { return($words[0]); }
+        case 2: case 3: case 4:  { return($words[1]); }
+        default: { return($words[2]); }
+      }
+    }
+    var timeend;
+    timeend= new Date(2017,8,1,09,00);
+    function time() {
+        today = new Date();
+        if (today > timeend ) {
+          document.getElementById('tTitle').innerHTML='Акция стартовала!';
+          return;
+        }
+        today = Math.floor((timeend-today)/1000);
+        tsec=today%60; today=Math.floor(today/60); if(tsec<10)tsec='0'+tsec;
+        tmin=today%60; today=Math.floor(today/60); if(tmin<10)tmin='0'+tmin;
+        thour=today%24; today=Math.floor(today/24);
+        timestr=today +num2word(today,[' день ',' дня ',' дней '])+thour+num2word(thour,[' час ',' часа ',' часов '])+tmin+num2word(tmin,[' минута ',' минуты ',' минут '])+tsec+num2word(tsec,[' секунда ',' секунды ',' секунд ']);
+        document.getElementById('t').innerHTML=timestr;
+        window.setTimeout("time()",1000);
+    }

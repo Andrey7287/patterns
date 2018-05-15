@@ -21,6 +21,3 @@ http://freefrontend.com/css-headers-footers/
 www.templatemonster.com
 https://tomitm.github.io/appmanifest/
 
-2fba8068a91ea956a6fe240d6d96796e253ed563
-sync id: fd9f66f8d33db3075b588d3779af8129
-
